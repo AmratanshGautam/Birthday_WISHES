@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Special Someone!</title>
+    
+    <style>
+        /* CSS Styles */
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #ffb8b8;
+            --accent-color: #ffd166;
+            --dark-color: #4a4a4a;
+            --light-color: #f7fff7;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Neue', cursive, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary-color);
+            opacity: 0.8;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .birthday-cake {
+            font-size: 4rem;
+            display: inline-block;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-20px); }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            padding: 50px 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="white" opacity="0.1"><circle cx="25" cy="25" r="3"/><circle cx="75" cy="25" r="3"/><circle cx="50" cy="50" r="3"/><circle cx="25" cy="75" r="3"/><circle cx="75" cy="75" r="3"/></svg>');
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .photo-gallery {
+            margin-bottom: 50px;
+        }
+
+        .gallery-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .memory-wall {
+            background-color: var(--secondary-color);
+            padding: 50px 20px;
+            border-radius: 15px;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .memory-wall h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .memory-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .memory-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .memory-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .memory-date {
+            font-style: italic;
+            color: var(--dark-color);
+            opacity: 0.7;
+            margin-bottom: 15px;
+        }
+
+        .wishes-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .wishes-section h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+
+        .wishes-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .wish-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .wishes-display {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-top: 30px;
+        }
+
+        .wish-item {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+            text-align: left;
+        }
+
+        .wish-item:last-child {
+            border-bottom: none;
+        }
+
+        .wish-author {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .wish-message {
+            color: var(--dark-color);
+        }
+
+        /* Video Section Styles */
+        .video-section {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #fff9f9;
+            border-radius: 15px;
+            margin-bottom: 50px;
+            box-shadow: var(--shadow);
+        }
+        
+        .video-section h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+        
+        .video-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .video-container iframe,
+        .video-container video {
+            width: 100%;
+            height: 450px;
+            border: none;
+            display: block;
+        }
+        
+        .video-caption {
+            font-size: 1.2rem;
+            color: var(--dark-color);
+            margin-top: 20px;
+        }
+        
+        /* Recording Modal Styles */
+        .recording-container {
+            margin-top: 20px;
+        }
+        
+        #videoPreview {
+            width: 100%;
+            max-height: 400px;
+            background: #000;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        
+        .recording-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        /* Responsive Video */
+        @media (max-width: 768px) {
+            .video-container iframe,
+            .video-container video {
+                height: 350px;
+            }
+            
+            .video-section h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .video-container iframe,
+            .video-container video {
+                height: 250px;
+            }
+            
+            .recording-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .recording-controls .btn {
+                width: 100%;
+            }
+        }
+
+
+
+        .countdown-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .countdown-section h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-box {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            min-width: 100px;
+            box-shadow: var(--shadow);
+        }
+
+        .countdown-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .countdown-label {
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        .music-player {
+            background-color: var(--secondary-color);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .music-player h2 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .player-btn {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .player-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .playlist {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .playlist-item {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .playlist-item:hover {
+            background-color: var(--accent-color);
+        }
+
+        .playlist-item.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .quiz-section {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin-bottom: 50px;
+        }
+
+        .quiz-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quiz-question {
+            margin-bottom: 30px;
+        }
+
+        .quiz-question h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .quiz-option {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .quiz-option:hover {
+            background-color: var(--primary-color);
+        }
+
+        .quiz-option.selected {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            font-weight: bold;
+        }
+
+        .quiz-result {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            display: none;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .whatsapp-button {
+          padding: 12px 24px;
+          background-color: #25D366;
+          color: white;
+          font-size: 18px;
+          border: none;
+          border-radius: 8px;
+          text-decoration: none;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          transition: background 0.3s ease;
+        }
+        .whatsapp-button:hover {
+          background-color: #1ebe5b;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-color);
+        }
+
+        .modal h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .modal p {
+            margin-bottom: 30px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            background-color: var(--dark-color);
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section h2 {
+                font-size: 2rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .countdown-box {
+                min-width: 80px;
+                padding: 15px;
+            }
+
+            .countdown-value {
+                font-size: 2rem;
+            }
+
+            .quiz-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .birthday-cake {
+                font-size: 3rem;
+            }
+
+            .hero-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .countdown-container {
+                gap: 10px;
+            }
+
+            .countdown-box {
+                min-width: 70px;
+                padding: 10px;
+            }
+
+            .countdown-value {
+                font-size: 1.8rem;
+            }
+
+            .countdown-label {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Animation classes */
+        .shake {
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+
+        .heartbeat {
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Special elements */
+        .polaroid {
+            background: white;
+            padding: 15px 15px 40px 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: rotate(-2deg);
+            transition: all 0.3s ease;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .polaroid-caption {
+            text-align: center;
+            font-family: 'Comic Neue', cursive;
+            color: var(--dark-color);
+        }
+
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            box-shadow: inset -7px -7px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .balloon::before {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: 50px;
+            background-color: #ccc;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .balloon:nth-child(2n) {
+            background-color: var(--accent-color);
+            animation-delay: 1s;
+        }
+
+        .balloon:nth-child(3n) {
+            background-color: var(--secondary-color);
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-50px) rotate(5deg); }
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Confetti elements will be added by JavaScript -->
+    
+    <!-- Balloons -->
+    <div class="balloon" style="left: 10%; top: 20%;"></div>
+    <div class="balloon" style="left: 30%; top: 15%;"></div>
+    <div class="balloon" style="left: 70%; top: 25%;"></div>
+    <div class="balloon" style="left: 85%; top: 20%;"></div>
+    
+    <!-- Scroll to top button -->
+    <div class="scroll-top" id="scrollTopBtn">↑</div>
+    
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>Happy Birthday <span id="birthdayName">Beautiful Princess...</span>!</h1>
+                <div class="birthday-cake">🎂</div>
+                <p>Wishing you the most amazing day filled with joy and happiness!</p>
+            </div>
+        </header>
+        
+        <section class="hero-section">
+            <div class="hero-content">
+                <h2>Today is all about YOU!</h2>
+                <p>On this special day, we celebrate the wonderful person you are. May your birthday be as incredible as you are to everyone around you!</p>
+                <button class="btn" id="surpriseBtn">Click for a Surprise!</button>
+            </div>
+        </section>
+        
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🎁</div>
+                <h3>Virtual Gifts</h3>
+                <p>Open your special virtual birthday gifts curated just for you!</p>
+                <button class="btn" onclick="openModal('giftsModal')">Open Gifts</button>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📸</div>
+                <h3>Memory Lane</h3>
+                <p>Take a walk down memory lane with our special photo collection.</p>
+                <button class="btn" onclick="openModal('memoriesModal')">View Memories</button>
+            </div>
+            
+            
+        </section>
+        
+        <section class="photo-gallery">
+            <h2 class="gallery-title">Our Special Moments</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images\cake.png" alt="Birthday moment">
+                    <div class="gallery-caption">Celebrating you!</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images\party.jpg" alt="Party moment">
+                    <div class="gallery-caption">Party time!</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images\cake..png" alt="Cake moment">
+                    <div class="gallery-caption">Delicious cake!</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images\smile.jpg" alt="Smile moment">
+                    <div class="gallery-caption">Your beautiful smile!</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="memory-wall">
+            <h2>Memory Wall</h2>
+            <div class="memory-container">
+                <div class="memory-card">
+                    <h3>When Eyes First Met...
+                    </h3>
+                    <div class="memory-date">January 2, 2025</div>
+                    <p>In a quiet class, with voices low,
+                        She turned to me — a subtle glow.
+                        A question asked, so simple, sweet,
+                        Yet in that glance, our fates did meet.
+                    </p>
+                    <br>
+                    <p>
+                        My heart, once still, began to race,
+                        Affection blooming in that space.
+                        From that one moment, soft and bright,
+                        She lingered gently in my sight.
+                    </p><br><p>   
+                        I found her name, her world online,
+                        On Insta’s screen, her smile did shine.
+                        With nervous hands, I sent a text,
+                        Not knowing what would happen next.
+                    </p><br><p>    
+                        A step so small, yet brave and true,
+                        The start of something fresh and new.
+                        Not love declared, not silence sworn —
+                        Just feelings quietly being born.
+                    </p><br>
+                </div>
+                <div class="memory-card">
+                    <h3>The Call That Spoke My Heart</h3>
+                    <div class="memory-date">February 25, 2025</div>
+                    <p>One evening, courage lit my flame,
+                        Urged by friends, I spoke your name.
+                        A trembling voice, a hopeful tone,
+                        Reached out to not feel so alone.
+                    </p><br><p> 
+                        But calm and kind, your truth did shine,
+                        “I’m happily single, and doing fine.”
+                        No harshness there, no cold retreat,
+                        Just honest words, both soft and sweet.</p><br>
+                </div>
+                <div class="memory-card">
+                    <h3>A Bond Beyond The Blush</h3>
+                    <div class="memory-date">March 15, 2022</div>
+                    <p>Yet even after the moment passed,
+                        Our friendship held, it grew steadfast.
+                        You let me in, no walls, no guard,
+                        Shared tales that life had etched and scarred.
+                    </p><br><p>    
+                        From late-night talks to stories deep,
+                        Of family roots and wounds that seep,
+                        You gave me trust, a sacred space,
+                        Where friendship bloomed with gentle grace.</p><br>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ======= Video Message Section ======= -->
+        <section class="video-section">
+            <h2>A Special Video Message</h2>
+            <div class="video-container">
+                
+                <!-- Option 2: Local video file -->
+                <video controls>
+                    <source src="videos\Birthday video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="video-caption">
+                <p>These moments may have passed, but their warmth still lingers — in every smile, every candle, every hug.
+                    May this birthday remind you of how deeply you’re loved, and how beautifully you light up the lives around you.<br><br>
+                    <b><i>Happy Birthday, Himani — this memory is just one of many reasons you’re unforgettable.</i></b></p>
+                <!-- <button class="btn" id="recordMessageBtn">Record Your Own Message</button> -->
+            </div>
+        </section>
+
+        <!-- Video Recording Modal
+        <div class="modal" id="videoModal">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeModal('videoModal')">&times;</span>
+                <h2>Record a Birthday Message</h2>
+                <div class="recording-container">
+                    <video id="videoPreview" autoplay muted></video>
+                    <div class="recording-controls">
+                        <button class="btn" id="startRecording">Start Recording</button>
+                        <button class="btn" id="stopRecording" disabled>Stop Recording</button>
+                        <button class="btn" id="playRecording" disabled>Play Recording</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <section class="countdown-section">
+            <h2>Countdown to Your Next Birthday</h2>
+            <div class="countdown-container">
+                <div class="countdown-box">
+                    <div class="countdown-value" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-value" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="wishes-section">
+            <h2>Birthday Wishes</h2>
+            <div class="wishes-container">
+                <div class="wish-form">
+                    <div class="form-group">
+                        <label for="wish-name">Your Name</label>
+                        <input type="text" id="wish-name" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="wish-message">Your Birthday Wish</label>
+                        <textarea id="wish-message" placeholder="Write your special birthday wish here..."></textarea>
+                    </div>
+                    <button class="btn" id="submit-wish">Submit Wish</button>
+                </div>
+                <div class="wishes-display">
+                    <h3>Wishes from Friends & Family</h3>
+                    <div id="wishes-list">
+                        <!-- Wishes will be added here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="quiz-section">
+            <h2>How Well Do You Know The Birthday Person?</h2>
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    <h3>1. What is their favorite color?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectAnswer(this, 0)">Blue</div>
+                        <div class="quiz-option" onclick="selectAnswer(this, 0)">Red</div>
+                        <div class="quiz-option" onclick="selectAnswer(this, 1)">Pink</div>
+                        <div class="quiz-option" onclick="selectAnswer(this, 0)">Yellow</div>
+                        <div class="quiz-option" onclick="selectAnswer(this, 0)">All of them...</div>
+                    </div>
+                </div>
+                <div class="quiz-question">
+                    <h3>2. Which is the best day of her life?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectAnswer(this, 0)">When she was born</div>
+                        <div class="quiz-option" onclick="selectAnswer(this, 0)">When she found her mightest hometown friends</div>
+                        <div class="quiz-option" onclick="selectAnswer(this, 1)">The date when her 10th result released</div>
+                        <div class="quiz-option" onclick="selectAnswer(this, 0)">Her first smart phone</div>
+                        <div class="quiz-option" onclick="selectAnswer(this, 0)">All of them...</div>
+                    </div>
+                </div>
+                <div class="quiz-question">
+                    <h3>3. What is their favorite food?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectAnswer(this, 0)">Pizza</div>
+                        <div class="quiz-option" onclick="selectAnswer(this, 0)">Chole Kulche</div>
+                        <div class="quiz-option" onclick="selectAnswer(this, 0)">Daal Makhni</div>
+                        <div class="quiz-option" onclick="selectAnswer(this, 0)">Pani Puri</div>
+                        <div class="quiz-option" onclick="selectAnswer(this, 1)">All of them...</div>
+                    </div>
+                </div>
+                <div class="quiz-question">
+                    <h3>4. What is their dream vacation?</h3>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectAnswer(this, 0)">Paris</div>
+                        <div class="quiz-option" onclick="selectAnswer(this, 0)">Amritsar and 12 Jyotirlings</div>
+                        <div class="quiz-option" onclick="selectAnswer(this, 0)">Switzerland</div>
+                        <div class="quiz-option" onclick="selectAnswer(this, 0)">Tokyo</div>
+                        <div class="quiz-option" onclick="selectAnswer(this, 1)">All of them...</div>
+                    </div>
+                </div>
+                <button class="btn" onclick="checkQuizAnswers()">Submit Answers</button>
+                <div class="quiz-result" id="quizResult"></div>
+            </div>
+        </section>
+        
+        <section class="music-player">
+            <h2>Birthday Playlist</h2>
+            <div class="polaroid">
+                <img src="images\gorilla-with-headphones.jpg" alt="Music">
+                <div class="polaroid-caption">Your Special Playlist</div>
+            </div>
+            <div class="player-controls">
+                <button class="player-btn" onclick="playPreviousSong()">⏮</button>
+                <button class="player-btn" id="playBtn" onclick="togglePlay()">▶</button>
+                <button class="player-btn" onclick="playNextSong()">⏭</button>
+            </div><br><div>
+                <a class="whatsapp-button" href="https://wa.me/919425077259?text=Hey%20Amratansh!%20I%20visited%20your%20page%20and%20wanted%20to%20say%20hi!" target="_blank">
+                    Message Me on WhatsApp
+                  </a>
+            </div>
+            
+        </section>
+    </div>
+    
+    <!-- Modals -->
+    <div class="modal" id="giftsModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('giftsModal')">&times;</span>
+            <h2>Your Virtual Gifts</h2>
+            <p>Here are some special gifts for you on your birthday!</p>
+            <div class="features" style="grid-template-columns: 1fr 1fr; margin-top: 20px;">
+                <div class="feature-card" style="padding: 15px;">
+                    <div class="feature-icon">💐</div>
+                    <h3>Virtual Flowers</h3>
+                    <p>A beautiful bouquet of your favorite flowers!</p>
+                </div>
+                <div class="feature-card" style="padding: 15px;">
+                    <div class="feature-icon">🍫</div>
+                    <h3>Virtual Chocolate</h3>
+                    <p>The sweetest treats for the sweetest person!</p>
+                </div>
+            </div>
+            <button class="btn" onclick="showSpecialMessage()" style="margin-top: 20px;">Open Special Message</button>
+        </div>
+    </div>
+    
+    <div class="modal" id="specialMessageModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('specialMessageModal')">&times;</span>
+            <h2>Special Birthday Message</h2>
+            <p id="specialMessageText">Loading your special message...</p>
+            <div class="heartbeat" style="font-size: 3rem; margin: 20px 0;">❤️</div>
+            <button class="btn" onclick="closeModal('specialMessageModal')">Close</button>
+        </div>
+    </div>
+    
+    <div class="modal" id="memoriesModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('memoriesModal')">&times;</span>
+            <h2>Special Memories</h2>
+            <p>Here are some of our favorite memories together!</p>
+            <div class="gallery-grid" style="margin-top: 20px;">
+                <div class="gallery-item">
+                    <img src="images\bst.frnd.jpg" alt="Friends moment">
+                    <div class="gallery-caption">Best Friends Forever!</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images\adventure.jpg" alt="Adventure moment">
+                    <div class="gallery-caption">Our Great Adventure!</div>
+                </div>
+            </div>
+            <button class="btn" style="margin-top: 20px;" onclick="closeModal('memoriesModal')">Close</button>
+        </div>
+    </div>
+    
+    <div class="modal" id="musicModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('musicModal')">&times;</span>
+            <h2>Birthday Music Player</h2>
+            <p>Enjoy your custom birthday playlist!</p>
+            <div class="player-controls" style="margin: 20px 0;">
+                <button class="player-btn" onclick="playPreviousSong()">⏮</button>
+                <button class="player-btn" id="modalPlayBtn" onclick="togglePlay()">▶</button>
+                <button class="player-btn" onclick="playNextSong()">⏭</button>
+            </div>
+            <div class="playlist">
+                <div class="playlist-item active" onclick="playSong(0)">Baar-Baar Din Ye Aaye...</div>
+                <div class="playlist-item" onclick="playSong(1)">Party Mashup...</div>
+                <div class="playlist-item" onclick="playSong(2)">Happy Birthday..</div>
+                <div class="playlist-item" onclick="playSong(3)">Tumse Oo ...</div>
+                <div class="playlist-item" onclick="playSong(4)">Party All Night...</div>
+            </div>
+            <button class="btn" style="margin-top: 20px;" onclick="closeModal('musicModal')">Close</button>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Made with ❤️ for your special day!</p>
+        <p>© 2025 Birthday Celebration</p>
+        <div class="social-links">
+            <a href="#" class="social-link">📱</a>
+            <a href="#" class="social-link">💻</a>
+            <a href="#" class="social-link">📧</a>
+        </div>
+    </footer>
+    
+    <script>
+        // JavaScript Code
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set birthday person's name
+            const birthdayName = prompt("Whose birthday is it today?", "BEAUTIFUL PRINCESS...");
+            if (birthdayName) {
+                document.getElementById('birthdayName').textContent = birthdayName;
+                
+                document.title = `Happy Birthday ${birthdayName}!!`;
+            }
+            
+            // Initialize countdown
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            
+            // Add some sample wishes
+            addWish("Mammi", "Wishing you the happiest of birthdays filled with love and joy!");
+            addWish("Papa", "I may not be there with you physically, but my love, blessings and pride in you will always remain. I see you growing, smiling and becoming the wonderful person I always knew you would be. Keep shining, my child, my princess, and know that I am always watching over you with love. Stay strong, stay happy, and remember - I am always in your heart. ( With endless love, Your Papa )",
+             "Your Papa");
+            addWish("Best Friend", "I am always here for you.", "Happy Birthday! Can't wait to celebrate with you!");            
+            
+            // Set up scroll to top button
+            const scrollTopBtn = document.getElementById('scrollTopBtn');
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.classList.add('active');
+                } else {
+                    scrollTopBtn.classList.remove('active');
+                }
+            });
+            
+            scrollTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Set up surprise button
+            document.getElementById('surpriseBtn').addEventListener('click', function() {
+                createConfetti();
+                this.classList.add('shake');
+                setTimeout(() => {
+                    this.classList.remove('shake');
+                }, 500);
+                
+                // Show special message after confetti
+                setTimeout(() => {
+                    showSpecialMessage();
+                }, 1000);
+            });
+            
+            // Set up wish submission
+            document.getElementById('submit-wish').addEventListener('click', function() {
+                const name = document.getElementById('wish-name').value.trim();
+                const message = document.getElementById('wish-message').value.trim();
+                
+                if (name && message) {
+                    addWish(name, message);
+                    document.getElementById('wish-name').value = '';
+                    document.getElementById('wish-message').value = '';
+                    
+                    // Show confirmation
+                    alert('Thank you for your birthday wish!');
+                } else {
+                    alert('Please enter both your name and a message.');
+                }
+            });
+            
+            // Initialize music player
+            initMusicPlayer();
+        });
+
+        // Video Recording Functionality
+        let mediaRecorder;
+        let recordedChunks = [];
+        
+        document.getElementById('recordMessageBtn')?.addEventListener('click', function() {
+            openModal('videoModal');
+            initVideoRecording();
+        });
+        
+        function initVideoRecording() {
+            navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+                .then(function(stream) {
+                    const videoPreview = document.getElementById('videoPreview');
+                    videoPreview.srcObject = stream;
+                    
+                    document.getElementById('startRecording').addEventListener('click', function() {
+                        recordedChunks = [];
+                        mediaRecorder = new MediaRecorder(stream);
+                        
+                        mediaRecorder.ondataavailable = function(e) {
+                            if (e.data.size > 0) {
+                                recordedChunks.push(e.data);
+                            }
+                        };
+                        
+                        mediaRecorder.onstop = function() {
+                            const videoBlob = new Blob(recordedChunks, { type: 'video/webm' });
+                            const videoUrl = URL.createObjectURL(videoBlob);
+                            
+                            const videoPreview = document.getElementById('videoPreview');
+                            videoPreview.srcObject = null;
+                            videoPreview.src = videoUrl;
+                            videoPreview.controls = true;
+                            
+                            document.getElementById('playRecording').disabled = false;
+                        };
+                        
+                        mediaRecorder.start();
+                        document.getElementById('startRecording').disabled = true;
+                        document.getElementById('stopRecording').disabled = false;
+                        document.getElementById('playRecording').disabled = true;
+                    });
+                    
+                    document.getElementById('stopRecording').addEventListener('click', function() {
+                        mediaRecorder.stop();
+                        document.getElementById('startRecording').disabled = false;
+                        document.getElementById('stopRecording').disabled = true;
+                    });
+                    
+                    document.getElementById('playRecording').addEventListener('click', function() {
+                        const videoPreview = document.getElementById('videoPreview');
+                        videoPreview.play();
+                    });
+                })
+                .catch(function(err) {
+                    console.error("Error accessing media devices:", err);
+                    alert("Could not access camera/microphone. Please check permissions.");
+                });
+        }
+        
+        // Clean up when modal closes
+        function closeVideoModal() {
+            const videoPreview = document.getElementById('videoPreview');
+            if (videoPreview.srcObject) {
+                videoPreview.srcObject.getTracks().forEach(track => track.stop());
+            }
+            videoPreview.srcObject = null;
+            videoPreview.src = '';
+            videoPreview.controls = false;
+            closeModal('videoModal');
+        }
+        
+        // Update your existing closeModal function to handle video cleanup
+        function closeModal(modalId) {
+            if (modalId === 'videoModal') {
+                closeVideoModal();
+            } else {
+                document.getElementById(modalId).style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+
+
+        
+        // Countdown to next birthday
+        function updateCountdown() {
+            const now = new Date();
+            const nextBirthday = new Date(now.getFullYear() + 1 , now.getMonth(), now.getDate());
+            
+            if (now > nextBirthday) {
+                nextBirthday.setFullYear(nextBirthday.getFullYear() + 1);
+            }
+            
+            const diff = nextBirthday - now;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24 ));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24 )) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = Math.floor(hours).toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = Math.floor(minutes).toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = Math.floor(seconds).toString().padStart(2, '0');
+        }
+        
+        // Add wish to the list
+        function addWish(name, message) {
+            const wishesList = document.getElementById('wishes-list');
+            const wishItem = document.createElement('div');
+            wishItem.className = 'wish-item';
+            wishItem.innerHTML = `
+                <div class="wish-author">${name}</div>
+                <div class="wish-message">${message}</div>
+            `;
+            wishesList.prepend(wishItem);
+        }
+        
+        // Quiz functions
+        let quizAnswers = [];
+        
+        function selectAnswer(element, isCorrect) {
+            // Remove selected class from siblings
+            const siblings = element.parentElement.children;
+            for (let i = 0; i < siblings.length; i++) {
+                siblings[i].classList.remove('selected');
+            }
+            
+            // Add selected class to clicked element
+            element.classList.add('selected');
+            
+            // Store answer
+            const questionIndex = Array.from(document.querySelectorAll('.quiz-question')).indexOf(element.closest('.quiz-question'));
+            quizAnswers[questionIndex] = isCorrect;
+        }
+        
+        function checkQuizAnswers() {
+            const correctAnswers = quizAnswers.filter(answer => answer).length;
+            const totalQuestions = document.querySelectorAll('.quiz-question').length;
+            const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+            
+            const resultElement = document.getElementById('quizResult');
+            resultElement.style.display = 'block';
+            
+            if (percentage >= 80) {
+                resultElement.textContent = `Amazing! You got ${correctAnswers} out of ${totalQuestions} correct! You know them well!`;
+            } else if (percentage >= 50) {
+                resultElement.textContent = `Good job! You got ${correctAnswers} out of ${totalQuestions} correct!`;
+            } else {
+                resultElement.textContent = `You got ${correctAnswers} out of ${totalQuestions} correct. Maybe you should get to know them better!`;
+            }
+            
+            // Scroll to result
+            resultElement.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Music player functions
+        let currentSong = 0;
+        let isPlaying = false;
+        const songs = [
+            { title: "Baar-Baar Din Ye Aaye...", src: "https://drive.google.com/file/d/15Z2czHIuWyC8-wM5tAU8hOMWo0zh30p0/view?usp=drivesdk" },
+            { title: "Party Mashup...", src: "https://drive.google.com/file/d/15eK90rHKoGccutbLFjRBS-zzF4_St_bi/view?usp=drivesdk" },
+            { title: "Happy Birthday..", src: "https://drive.google.com/file/d/15Yt8OUeoOiPn3C07psVhvp72MjvT72fn/view?usp=drivesdk" },
+            { title: "Tumse Oo ...", src: "https://drive.google.com/file/d/15aYAEIUPR8QFfCYfnd9CY-C18FOtA_Js/view?usp=drivesdk" },
+            { title: "Party All Night...", src: "https://drive.google.com/file/d/15Ppk9W4ybZeNNBghl6FBRVfnWsFGzGbH/view?usp=drivesdk"}
+        ];
+        let audio;
+        
+        function initMusicPlayer() {
+            audio = new Audio(songs[currentSong].src);
+            
+            audio.addEventListener('ended', function() {
+                playNextSong();
+            });
+        }
+        
+        function togglePlay() {
+            const playBtn = document.getElementById('playBtn');
+            const modalPlayBtn = document.getElementById('modalPlayBtn');
+            
+            if (isPlaying) {
+                audio.pause();
+                playBtn.textContent = '▶';
+                if (modalPlayBtn) modalPlayBtn.textContent = '▶';
+            } else {
+                audio.play();
+                playBtn.textContent = '⏸';
+                if (modalPlayBtn) modalPlayBtn.textContent = '⏸';
+            }
+            
+            isPlaying = !isPlaying;
+        }
+        
+        function playSong(index) {
+            // Update active song in playlist
+            const playlistItems = document.querySelectorAll('.playlist-item');
+            playlistItems.forEach(item => item.classList.remove('active'));
+            playlistItems[index].classList.add('active');
+            
+            // Change song
+            currentSong = index;
+            audio.src = songs[currentSong].src;
+            
+            // If player was playing, continue playing
+            if (isPlaying) {
+                audio.play();
+                document.getElementById('playBtn').textContent = '⏸';
+                const modalPlayBtn = document.getElementById('modalPlayBtn');
+                if (modalPlayBtn) modalPlayBtn.textContent = '⏸';
+            }
+        }
+        
+        function playNextSong() {
+            const nextSong = (currentSong + 1) % songs.length;
+            playSong(nextSong);
+        }
+        
+        function playPreviousSong() {
+            const prevSong = (currentSong - 1 + songs.length) % songs.length;
+            playSong(prevSong);
+        }
+        
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            if (modalId === 'musicModal' && isPlaying) {
+                document.getElementById('modalPlayBtn').textContent = '⏸';
+            }
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function showSpecialMessage() {
+            const name = document.getElementById('birthdayName').textContent;
+            const messages = [
+                `Dear ${name}, you are the most amazing person I know! Wishing you a birthday as wonderful as you are!`,
+                `Happy Birthday ${name}! May your day be filled with love, laughter, and all your favorite things!`,
+                `To ${name} on your special day: You make the world a better place just by being in it. Enjoy your day!`,
+                `${name}, your birthday is the perfect opportunity to tell you how much you mean to me. Have a fantastic day!`
+            ];
+            
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('specialMessageText').textContent = randomMessage;
+            
+            closeModal('giftsModal');
+            openModal('specialMessageModal');
+            
+            // Add some extra confetti for the special message
+            createConfetti();
+        }
+        
+        document.addEventListener('click', ()=> {
+            const video = document.getElementById('birthdayVideo');
+            video.play().catch(e => console.log("Autoplay prevented :", e));
+        }, { once: true});
+        // Confetti effect
+        function createConfetti() {
+            const colors = ['#ff6b6b', '#ffb8b8', '#ffd166', '#06d6a0', '#118ab2', '#073b4c'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.top = -10 + 'px';
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                
+                document.body.appendChild(confetti);
+                
+                const animationDuration = Math.random() * 3 + 2;
+                
+                confetti.style.animation = `fall ${animationDuration}s linear forwards`;
+                
+                // Create keyframes for falling animation
+                const keyframes = `
+                    @keyframes fall {
+                        to {
+                            transform: translateY(${window.innerHeight + 10}px) rotate(${Math.random() * 360}deg);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                
+                // Add style if not already added
+                if (!document.getElementById('confetti-animation')) {
+                    const style = document.createElement('style');
+                    style.id = 'confetti-animation';
+                    style.innerHTML = keyframes;
+                    document.head.appendChild(style);
+                }
+                
+                // Remove confetti after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, animationDuration * 1000);
+            }
+        }
+    </script>
+</body>
+</html>
